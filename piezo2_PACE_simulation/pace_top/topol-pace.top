@@ -1,0 +1,98 @@
+;
+;	File 'topol-pace.top' was generated
+;	By user: lish (503)
+;	On host: mgr.powerhpc.com
+;	At date: Thu Apr 18 11:35:46 2024
+;
+;	This is your topol-paceogy file
+;	"Check Your Input" (D. Van Der Spoel)
+;
+; Include forcefield parameters
+#include "ff/ffPACE_1.5.itp"
+#include "ff/martini_v2.0_lipids.itp"
+
+; Include chain topol-paceogies
+#include "topol-pace_A.itp"
+#include "topol-pace_B.itp"
+#include "topol-pace_C.itp"
+#include "topol-pace_D.itp"
+#include "topol-pace_E.itp"
+#include "topol-pace_F.itp"
+#include "topol-pace_G.itp"
+#include "topol-pace_H.itp"
+#include "topol-pace_I.itp"
+#include "topol-pace_J.itp"
+#include "topol-pace_K.itp"
+#include "topol-pace_L.itp"
+#include "topol-pace_M.itp"
+#include "topol-pace_N.itp"
+#include "topol-pace_O.itp"
+#include "topol-pace_P.itp"
+#include "topol-pace_Q.itp"
+#include "topol-pace_R.itp"
+#include "topol-pace_S.itp"
+#include "topol-pace_T.itp"
+#include "topol-pace_U.itp"
+#include "topol-pace_V.itp"
+#include "topol-pace_W.itp"
+#include "topol-pace_X.itp"
+#include "topol-pace_Y.itp"
+#include "topol-pace_Z.itp"
+#include "topol-pace_a.itp"
+#include "topol-pace_b.itp"
+#include "topol-pace_c.itp"
+#include "topol-pace_d.itp"
+
+; Include water topol-paceogy
+#include "ff/cg_Water.itp"
+
+#ifdef POSRES_WATER
+; Position restraint for each water oxygen
+[ position_restraints ]
+;  i funct       fcx        fcy        fcz
+   1    1       1000       1000       1000
+#endif
+
+; Include generic topol-paceogy for ions
+#include "ff/martini_v2.0_ions.itp"
+
+[ system ]
+; Name
+Protein
+
+[ molecules ]
+; Compound        #mols
+Protein_A           1
+Protein_B           1
+Protein_C           1
+Protein_D           1
+Protein_E           1
+Protein_F           1
+Protein_G           1
+Protein_H           1
+Protein_I           1
+Protein_J           1
+Protein_K           1
+Protein_L           1
+Protein_M           1
+Protein_N           1
+Protein_O           1
+Protein_P           1
+Protein_Q           1
+Protein_R           1
+Protein_S           1
+Protein_T           1
+Protein_U           1
+Protein_V           1
+Protein_W           1
+Protein_X           1
+Protein_Y           1
+Protein_Z           1
+Protein_AG          1
+Protein_AH          1
+Protein_AI          1
+Protein_AJ          1
+POPC            11355
+W           896114
+NA               11390
+CL               11483

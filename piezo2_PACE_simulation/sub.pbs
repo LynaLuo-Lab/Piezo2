@@ -1,0 +1,50 @@
+#!/bin/bash
+#PBS -N p2-pace
+#PBS -q q4
+#PBS -j oe
+#PBS -l nodes=8:ppn=24
+
+cd $PBS_O_WORKDIR
+source /share/scripts/gromacs-2022.3-ips2018u4-cpu.env
+
+bash posre.sh 500
+gmx_mpi grompp -f mdp/01_min-1.mdp -o min-1.tpr -c input_file/solvated.pdb -r input_file/solvated.pdb -p pace_top/topol-pace.top -n input_file/index.ndx -maxwarn 1
+mpirun gmx_mpi mdrun -deffnm min-1
+
+gmx_mpi grompp -f mdp/02_min-2 -o min-2.tpr -c min-1.gro -r min-1.gro  -p pace_top/topol-pace.top -n input_file/index.ndx
+mpirun gmx_mpi mdrun -deffnm min-2
+
+gmx_mpi grompp -f mdp/03_eq_pr-1.mdp -o eq_pr-1.tpr -c min-2.gro -r min-2.gro -p pace_top/topol-pace.top -n input_file/index.ndx  -maxwarn 3
+mpirun gmx_mpi mdrun -deffnm eq_pr-1
+
+gmx_mpi grompp -f mdp/04_eq_pr-2.mdp -o eq_pr-2.tpr -c eq_pr-1.gro -r eq_pr-1.gro -p pace_top/topol-pace.top -n input_file/index.ndx -maxwarn 3
+mpirun gmx_mpi mdrun -deffnm eq_pr-2
+
+
+# 50 ns equilibration simulation was proceeded with positional constraints applied only to the Cα atoms of cryo-EM resolved residues (excluding the homology models of the loops and linkers)
+cp pace_top/posre_G-500_eq.itp pace_top/posre_G.itp
+cp pace_top/posre_Q-500_eq.itp pace_top/posre_Q.itp
+cp pace_top/posre_a-500_eq.itp pace_top/posre_a.itp
+cp pace_top/posre_I-500_eq.itp pace_top/posre_I.itp
+cp pace_top/posre_S-500_eq.itp pace_top/posre_S.itp
+cp pace_top/posre_c-500_eq.itp pace_top/posre_c.itp
+cp pace_top/posre_J-500_eq.itp pace_top/posre_J.itp
+cp pace_top/posre_T-500_eq.itp pace_top/posre_T.itp
+cp pace_top/posre_d-500_eq.itp pace_top/posre_d.itp
+gmx_mpi grompp -f mdp/05_md_pr.mdp -o md_pr-1.tpr -c eq_pr-2.gro -r eq_pr-2.gro -p pace_top/topol-pace.top -n input_file/index.ndx -maxwarn 3
+mpirun gmx_mpi mdrun -deffnm md_pr-1
+
+
+
+# Weak positional restraints of 50 kJ·mol−1·nm−2 were applied on all protein Cα atoms for an additional 1 ns. In addition, to further balance the interactions between the PACE piezo protein and the MARTINI curved membrane, the equilibration time can be further extended to 150 ns or longer 
+bash posre.sh 50
+gmx_mpi grompp -f mdp/05_md_pr.mdp -o md_pr-2.tpr -c md_pr-1.gro -r md_pr-1.gro -p pace_top/topol-pace.top -n input_file/index.ndx -maxwarn 3
+mpirun gmx_mpi mdrun -deffnm md_pr-2
+
+# Finally, all production runs were performed without any positional constraints.
+gmx_mpi grompp -f mdp/06_md.mdp    -o md.tpr      -c md_pr-2.gro -r md_pr-2.gro -p pace_top/topol-pace.top -n input_file/index.ndx -maxwarn 3
+mpirun gmx_mpi mdrun -deffnm md
+
+
+
+

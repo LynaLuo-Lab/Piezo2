@@ -1,0 +1,11 @@
+       #time      : simulation time, unit: ns 
+       #_distVP   : pore size
+       #_dist67   : arm-arm distance S67 
+       #_distF    : arm-arm distance K776
+       #_domz1    : dome height 
+       #_flattenA : flatten angle 
+       #_projA    : projected area
+       #_domeA    : dome area
+       #_hrot     : rotation_angle
+       #_projA_RF : projected area repeatF
+       #_rad      : dome_radius

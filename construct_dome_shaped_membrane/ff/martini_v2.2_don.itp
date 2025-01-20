@@ -1,0 +1,9 @@
+[ moleculetype ]
+; molname       nrexcl
+DON                1
+[ atoms ]
+;id type resnr residu atom cgnr   charge
+ 1    DO     1   DON   DO    1      0    
+
+;[ position_restraints ]
+1 1 10000 10000 10000

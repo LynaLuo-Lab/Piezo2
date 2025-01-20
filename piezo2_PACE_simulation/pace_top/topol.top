@@ -1,0 +1,93 @@
+;
+;	File 'topol.top' was generated
+;	By user: lish (503)
+;	On host: mgr.powerhpc.com
+;	At date: Sun Apr 21 16:00:15 2024
+;
+;	This is your topology file
+;	"Been There, Done It" (Beavis and Butthead)
+;
+; Include forcefield parameters
+#include "ffPACE_1.3vdW.itp"
+
+; Include chain topologies
+#include "topol_A.itp"
+#include "topol_B.itp"
+#include "topol_C.itp"
+#include "topol_D.itp"
+#include "topol_E.itp"
+#include "topol_F.itp"
+#include "topol_G.itp"
+#include "topol_H.itp"
+#include "topol_I.itp"
+#include "topol_J.itp"
+#include "topol_K.itp"
+#include "topol_L.itp"
+#include "topol_M.itp"
+#include "topol_N.itp"
+#include "topol_O.itp"
+#include "topol_P.itp"
+#include "topol_Q.itp"
+#include "topol_R.itp"
+#include "topol_S.itp"
+#include "topol_T.itp"
+#include "topol_U.itp"
+#include "topol_V.itp"
+#include "topol_W.itp"
+#include "topol_X.itp"
+#include "topol_Y.itp"
+#include "topol_Z.itp"
+#include "topol_AG.itp"
+#include "topol_AH.itp"
+#include "topol_AI.itp"
+#include "topol_AJ.itp"
+
+; Include water topology
+#include "spc.itp"
+
+#ifdef POSRES_WATER
+; Position restraint for each water oxygen
+[ position_restraints ]
+;  i funct       fcx        fcy        fcz
+   1    1       1000       1000       1000
+#endif
+
+; Include generic topology for ions
+#include "ions.itp"
+
+[ system ]
+; Name
+Protein
+
+[ molecules ]
+; Compound        #mols
+Protein_A           1
+Protein_B           1
+Protein_C           1
+Protein_D           1
+Protein_E           1
+Protein_F           1
+Protein_G           1
+Protein_H           1
+Protein_I           1
+Protein_J           1
+Protein_K           1
+Protein_L           1
+Protein_M           1
+Protein_N           1
+Protein_O           1
+Protein_P           1
+Protein_Q           1
+Protein_R           1
+Protein_S           1
+Protein_T           1
+Protein_U           1
+Protein_V           1
+Protein_W           1
+Protein_X           1
+Protein_Y           1
+Protein_Z           1
+Protein_AG          1
+Protein_AH          1
+Protein_AI          1
+Protein_AJ          1

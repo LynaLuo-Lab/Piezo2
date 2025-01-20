@@ -1,0 +1,31 @@
+[ moleculetype ]
+; molname       nrexcl
+DDD                1
+[ atoms ]
+;id type resnr residu atom cgnr   charge
+ 1    ST     1   DDD   DT    1      0    
+
+[ position_restraints ]
+1 1 100000 100000 100000
+
+
+[ moleculetype ]
+; molname       nrexcl
+DD1                1
+[ atoms ]
+;id type resnr residu atom cgnr   charge
+ 1    ST     1   DD1   DT    1      0    
+
+[ position_restraints ]
+1 1 100000 100000 100000
+
+
+[ moleculetype ]
+; molname       nrexcl
+DD2                1
+[ atoms ]
+;id type resnr residu atom cgnr   charge
+ 1    ST     1   DD2   DT    1      0    
+
+[ position_restraints ]
+1 1 100000 100000 100000
